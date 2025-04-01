@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Black Festival 2025</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Modo escuro -->
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">Modo Escuro</button>
+
+    <!-- Seção de Introdução -->
+    <section class="intro">
+        <h1>All Black Festival</h1>
+        <p>Bem-vindo ao All Black Festival! Um evento único, onde todos os participantes devem vestir preto(se quiser). O festival acontece a cada dois anos, no Rio de Janeiro, com atrações incríveis como Sabrina Carpenter, Jennie (BLACKPINK) e Stray Kids!</p>
+        <p><strong>Data:</strong> 15 a 17 de julho de 2025</p>
+        <p><strong>Local:</strong> Rio de Janeiro, Praça da Apoteose</p>
+        <p><strong>Prepare-se para uma experiência inesquecível, onde a música e o estilo se encontram!</p>
+    </section>
+
+    <!-- Atrações -->
+    <section class="attractions">
+        <h2>Atrações Musicais</h2>
+        <div class="container">
+            {% for attraction in attractions %}
+            <div class="artist-card">
+                <img src="{{ url_for('static', filename='images/' + attraction.image) }}" alt="{{ attraction.name }}" class="artist-img">
+                <div class="artist-info">
+                    <h3>{{ attraction.name }}</h3>
+                    <p>{{ attraction.description }}</p>
+                    <a href="{{ url_for('attraction_details', id=attraction.id) }}" class="btn">Ver Detalhes</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contact">
+        <h2>Contato</h2>
+        <p>Se você tiver dúvidas ou precisar de mais informações sobre o All Black Festival, entre em contato conosco:</p>
+        <ul>
+            <li>Email: <a href="mailto:contato@allblackfestival.com">contato@allblackfestival.com</a></li>
+            <li>Telefone: (21) 1234-5678</li>
+        </ul>
+    </section>
+
+    <!-- Direitos Autorais -->
+    <footer>
+        <p>&copy; 2025 Livia Eiras - Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

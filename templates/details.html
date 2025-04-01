@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ attraction.name }} - Festival Brasil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>{{ attraction.name }}</h1>
+    <div class="image-container">
+        <img src="{{ attraction.image }}" alt="{{ attraction.name }}" class="main-image">
+    </div>
+    
+    <p><strong>Descrição:</strong> {{ attraction.description }}</p>
+    <p><strong>Data:</strong> {{ attraction.date }} <strong>Horário:</strong> {{ attraction.time }}</p>
+    <p><strong>Local:</strong> Praia de Copacabana, Rio de Janeiro</p>
+    
+    <h2>Comentários</h2>
+    <ul>
+        {% for comment in attraction.comments %}
+        <li><strong>{{ comment.author }}:</strong> {{ comment.text }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('home') }}">Voltar</a>
+</body>
+</html>
